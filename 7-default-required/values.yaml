@@ -3,3 +3,4 @@ hpas:
   deploymentName: myhpa-v2
 - name: myotherhpa
 - deploymentName: 3rdhpa
+  name: myhpa3

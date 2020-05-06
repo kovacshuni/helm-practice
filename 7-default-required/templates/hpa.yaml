@@ -4,8 +4,8 @@
 #   2. make the deploymentName variable to be the name by default if it is not provided
 #
 {{ define "my.hpa" }}
-{{ $name:= .name }}
-{{ $deploymentName:= .deploymentName }}
+{{ $name:= required "name is not found in hpas settings" .name }}
+{{ $deploymentName:= default .name .deploymentName }}
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
