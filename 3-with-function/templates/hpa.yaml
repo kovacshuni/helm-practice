@@ -6,7 +6,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Values.application.name }}
 spec:
-  {{ with required "errormsghi" $.Values.really.nested.hpa2 -}}
+  {{ with $.Values.really.nested.hpa2 -}}
   maxReplicas: {{ .replicas.max }}
   minReplicas: {{ .replicas.min }}
   scaleTargetRef:
@@ -14,4 +14,6 @@ spec:
     kind: Deployment
     name: {{ $.Values.application.name }}
   targetCPUUtilizationPercentage: {{ .cpu }}
+  {{ else }}
+    elsebranch
   {{ end -}}
